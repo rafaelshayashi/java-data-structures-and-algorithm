@@ -112,4 +112,14 @@ public class StackTest {
 
         assertEquals(10, elements.length);
     }
+
+    @Test
+    public void should_return_size_of_stack() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+
+        assertEquals(2, stack.size());
+    }
 }

@@ -56,7 +56,6 @@ public class Stack<T> {
     }
 
     public int size() {
-        // TODO implement size
-        throw new UnsupportedOperationException("Peek method not implemented yet");
+        return size;
     }
 }
