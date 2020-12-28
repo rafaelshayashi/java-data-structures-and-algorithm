@@ -65,4 +65,21 @@ public class StackTest {
         assertEquals(10, stack.pop());
         assertNull(stack.pop());
     }
+
+    @Test
+    public void should_peek_element() throws NoSuchFieldException, IllegalAccessException {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+
+        Field field = Stack.class.getDeclaredField("elements");
+        field.setAccessible(true);
+
+        Object[] elements = (Object[]) field.get(stack);
+
+        assertEquals(20, stack.peek());
+        assertEquals(10, elements[0]);
+        assertEquals(20, elements[1]);
+    }
 }
