@@ -47,8 +47,7 @@ public class Stack<T> {
     }
 
     public boolean isEmpty() {
-        // TODO implement isEmpty
-        throw new UnsupportedOperationException("isEmpty method not implemented yet");
+        return size == 0;
     }
 
     public void clear(){

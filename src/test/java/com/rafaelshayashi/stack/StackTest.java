@@ -6,8 +6,7 @@ import java.lang.reflect.Field;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
 
@@ -81,5 +80,17 @@ public class StackTest {
         assertEquals(20, stack.peek());
         assertEquals(10, elements[0]);
         assertEquals(20, elements[1]);
+    }
+
+    @Test
+    public void should_verify_if_a_stack_is_empty() {
+        Stack<Integer> stack = new Stack<>();
+
+        assertTrue(stack.isEmpty());
+
+        stack.push(10);
+        stack.push(20);
+
+        assertFalse(stack.isEmpty());
     }
 }
