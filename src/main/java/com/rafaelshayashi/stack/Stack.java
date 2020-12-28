@@ -32,8 +32,14 @@ public class Stack<T> {
     }
 
     public T pop (){
-        // TODO implement pop
-        throw new UnsupportedOperationException("Pop method not implemented yet");
+
+        if(size == 0) {
+            return null;
+        }
+
+        T element = elements[size - 1];
+        size--;
+        return element;
     }
 
     public T peek() {

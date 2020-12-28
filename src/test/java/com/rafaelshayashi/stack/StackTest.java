@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class StackTest {
 
@@ -51,5 +52,17 @@ public class StackTest {
         Object[] elements = (Object[]) field.get(stack);
 
         assertEquals(20, elements.length);
+    }
+
+    @Test
+    public void should_pop_element() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+
+        assertEquals(20, stack.pop());
+        assertEquals(10, stack.pop());
+        assertNull(stack.pop());
     }
 }
