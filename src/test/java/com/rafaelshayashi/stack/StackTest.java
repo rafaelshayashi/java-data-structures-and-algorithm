@@ -93,4 +93,23 @@ public class StackTest {
 
         assertFalse(stack.isEmpty());
     }
+
+    @Test
+    public void should_clear_stack() throws NoSuchFieldException, IllegalAccessException {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+
+        assertFalse(stack.isEmpty());
+        stack.clear();
+        assertTrue(stack.isEmpty());
+
+        Field field = Stack.class.getDeclaredField("elements");
+        field.setAccessible(true);
+
+        Object[] elements = (Object[]) field.get(stack);
+
+        assertEquals(10, elements.length);
+    }
 }

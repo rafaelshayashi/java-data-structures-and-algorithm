@@ -51,8 +51,8 @@ public class Stack<T> {
     }
 
     public void clear(){
-        // TODO implement clear
-        throw new UnsupportedOperationException("Clear method not implemented yet");
+        elements = (T[]) new Object[DEFAULT_SIZE];
+        size = 0;
     }
 
     public int size() {
