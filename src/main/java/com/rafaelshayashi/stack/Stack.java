@@ -2,7 +2,7 @@ package com.rafaelshayashi.stack;
 
 public class Stack<T> {
 
-    private final T[] elements;
+    private T[] elements;
     private int size;
     public static final int DEFAULT_SIZE = 10;
 
@@ -16,8 +16,19 @@ public class Stack<T> {
     }
 
     public void push(T element){
-        // TODO implement push
-        throw new UnsupportedOperationException("Push method not implemented yet");
+
+        if(size == elements.length){
+            increaseSize();
+        }
+        elements[size] = element;
+        size++;
+    }
+
+    private void increaseSize() {
+        var newSize = elements.length * 2;
+        var newArray = (T[]) new Object[newSize];
+        System.arraycopy(elements, 0, newArray, 0, elements.length);
+        elements = newArray;
     }
 
     public T pop (){
