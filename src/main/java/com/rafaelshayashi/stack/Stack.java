@@ -33,13 +33,11 @@ public class Stack<T> {
 
     public T pop (){
 
-        if(size == 0) {
+        if(isEmpty()) {
             return null;
         }
 
-        T element = elements[size - 1];
-        size--;
-        return element;
+        return elements[--size];
     }
 
     public T peek() {
