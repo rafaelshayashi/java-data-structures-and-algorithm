@@ -10,14 +10,14 @@ public class Stack<T> {
         this(DEFAULT_SIZE);
     }
 
-    public Stack(int size){
+    public Stack(int size) {
         this.elements = (T[]) new Object[size];
         this.size = 0;
     }
 
-    public void push(T element){
+    public void push(T element) {
 
-        if(size == elements.length){
+        if (size == elements.length) {
             increaseSize();
         }
         elements[size] = element;
@@ -31,9 +31,9 @@ public class Stack<T> {
         elements = newArray;
     }
 
-    public T pop (){
+    public T pop() {
 
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
 
@@ -48,12 +48,29 @@ public class Stack<T> {
         return size == 0;
     }
 
-    public void clear(){
+    public void clear() {
         elements = (T[]) new Object[DEFAULT_SIZE];
         size = 0;
     }
 
     public int size() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+
+        for (int i = 0; i < size - 1; i++) {
+            builder.append(elements[i]).append(", ");
+        }
+
+        if (size > 0) {
+            builder.append(elements[size - 1]);
+        }
+
+        builder.append("]");
+        return builder.toString();
     }
 }
