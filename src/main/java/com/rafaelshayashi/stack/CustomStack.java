@@ -1,9 +1,9 @@
 package com.rafaelshayashi.stack;
 
-public class CustomStack<T> {
+import com.rafaelshayashi.util.ArrayBasedStructure;
 
-    private T[] elements;
-    private int size;
+public class CustomStack<T> extends ArrayBasedStructure<T> {
+
     public static final int DEFAULT_SIZE = 10;
 
     public CustomStack() {
@@ -11,8 +11,7 @@ public class CustomStack<T> {
     }
 
     public CustomStack(int size) {
-        this.elements = (T[]) new Object[size];
-        this.size = 0;
+        super(size);
     }
 
     public void push(T element) {
@@ -22,13 +21,6 @@ public class CustomStack<T> {
         }
         elements[size] = element;
         size++;
-    }
-
-    private void increaseSize() {
-        var newSize = elements.length * 2;
-        var newArray = (T[]) new Object[newSize];
-        System.arraycopy(elements, 0, newArray, 0, elements.length);
-        elements = newArray;
     }
 
     public T pop() {
@@ -42,19 +34,6 @@ public class CustomStack<T> {
 
     public T peek() {
         return elements[size - 1];
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public void clear() {
-        elements = (T[]) new Object[DEFAULT_SIZE];
-        size = 0;
-    }
-
-    public int size() {
-        return size;
     }
 
     @Override
