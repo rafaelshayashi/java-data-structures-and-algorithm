@@ -8,13 +8,13 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StackTest {
+class CustomStackTest {
 
     @Test
-    public void should_create_stack_with_default_size() throws NoSuchFieldException, IllegalAccessException {
-        Stack<Integer> stack = new Stack<>();
+    void should_create_stack_with_default_size() throws NoSuchFieldException, IllegalAccessException {
+        CustomStack<Integer> stack = new CustomStack<>();
 
-        Field field = Stack.class.getDeclaredField("elements");
+        Field field = CustomStack.class.getDeclaredField("elements");
         field.setAccessible(true);
 
         Object[] elements = (Object[]) field.get(stack);
@@ -23,11 +23,11 @@ public class StackTest {
     }
 
     @Test
-    public void should_push_element_to_stack() throws NoSuchFieldException, IllegalAccessException {
-        Stack<Integer> stack = new Stack<>();
+    void should_push_element_to_stack() throws NoSuchFieldException, IllegalAccessException {
+        CustomStack<Integer> stack = new CustomStack<>();
         stack.push(5);
 
-        Field field = Stack.class.getDeclaredField("elements");
+        Field field = CustomStack.class.getDeclaredField("elements");
         field.setAccessible(true);
 
         Object[] elements = (Object[]) field.get(stack);
@@ -37,15 +37,15 @@ public class StackTest {
     }
 
     @Test
-    public void should_increase_size_automatically() throws NoSuchFieldException, IllegalAccessException {
-        Stack<Integer> stack = new Stack<>();
+    void should_increase_size_automatically() throws NoSuchFieldException, IllegalAccessException {
+        CustomStack<Integer> stack = new CustomStack<>();
 
-        IntStream.range(0, Stack.DEFAULT_SIZE + 1)
+        IntStream.range(0, CustomStack.DEFAULT_SIZE + 1)
                 .boxed()
                 .collect(Collectors.toList())
                 .forEach(stack::push);
 
-        Field field = Stack.class.getDeclaredField("elements");
+        Field field = CustomStack.class.getDeclaredField("elements");
         field.setAccessible(true);
 
         Object[] elements = (Object[]) field.get(stack);
@@ -54,8 +54,8 @@ public class StackTest {
     }
 
     @Test
-    public void should_pop_element() {
-        Stack<Integer> stack = new Stack<>();
+    void should_pop_element() {
+        CustomStack<Integer> stack = new CustomStack<>();
 
         stack.push(10);
         stack.push(20);
@@ -66,13 +66,13 @@ public class StackTest {
     }
 
     @Test
-    public void should_peek_element() throws NoSuchFieldException, IllegalAccessException {
-        Stack<Integer> stack = new Stack<>();
+    void should_peek_element() throws NoSuchFieldException, IllegalAccessException {
+        CustomStack<Integer> stack = new CustomStack<>();
 
         stack.push(10);
         stack.push(20);
 
-        Field field = Stack.class.getDeclaredField("elements");
+        Field field = CustomStack.class.getDeclaredField("elements");
         field.setAccessible(true);
 
         Object[] elements = (Object[]) field.get(stack);
@@ -83,8 +83,8 @@ public class StackTest {
     }
 
     @Test
-    public void should_verify_if_a_stack_is_empty() {
-        Stack<Integer> stack = new Stack<>();
+    void should_verify_if_a_stack_is_empty() {
+        CustomStack<Integer> stack = new CustomStack<>();
 
         assertTrue(stack.isEmpty());
 
@@ -95,8 +95,8 @@ public class StackTest {
     }
 
     @Test
-    public void should_clear_stack() throws NoSuchFieldException, IllegalAccessException {
-        Stack<Integer> stack = new Stack<>();
+    void should_clear_stack() throws NoSuchFieldException, IllegalAccessException {
+        CustomStack<Integer> stack = new CustomStack<>();
 
         stack.push(10);
         stack.push(20);
@@ -105,7 +105,7 @@ public class StackTest {
         stack.clear();
         assertTrue(stack.isEmpty());
 
-        Field field = Stack.class.getDeclaredField("elements");
+        Field field = CustomStack.class.getDeclaredField("elements");
         field.setAccessible(true);
 
         Object[] elements = (Object[]) field.get(stack);
@@ -114,8 +114,8 @@ public class StackTest {
     }
 
     @Test
-    public void should_return_size_of_stack() {
-        Stack<Integer> stack = new Stack<>();
+    void should_return_size_of_stack() {
+        CustomStack<Integer> stack = new CustomStack<>();
 
         stack.push(10);
         stack.push(20);

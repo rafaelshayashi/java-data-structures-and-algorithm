@@ -1,16 +1,16 @@
 package com.rafaelshayashi.stack;
 
-public class Stack<T> {
+public class CustomStack<T> {
 
     private T[] elements;
     private int size;
     public static final int DEFAULT_SIZE = 10;
 
-    public Stack() {
+    public CustomStack() {
         this(DEFAULT_SIZE);
     }
 
-    public Stack(int size) {
+    public CustomStack(int size) {
         this.elements = (T[]) new Object[size];
         this.size = 0;
     }
